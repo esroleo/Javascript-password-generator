@@ -4,11 +4,12 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+
 // Write password to the #password input
 function writePassword() {
   window.alert(" About to generate password");
-  //var password = generatePassword();
-  //var passwordText = document.querySelector("#password");
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
   
   //passwordText.value = password;
   document.getElementById("password").readOnly = false;
@@ -17,5 +18,9 @@ function writePassword() {
 
 }
 
+
+
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
