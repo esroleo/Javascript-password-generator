@@ -48,6 +48,8 @@ var generatePassword = function() {
   //console.log(userInput);
   //console.log(userInput[0]);
 
+  debugger;
+
   // Create a for loop to iterate the user input to determine if valid criteria input
   for (var i = 0; i < userInput.length; i++) {
     // Take one item/index from the user input
@@ -128,13 +130,56 @@ var generatePassword = function() {
       //debugger;
       
       
-      var counter = 1; // Counter for the while loop
+      //var counter = 1; // Counter for the while loop
+      // E.g 8 lengh - first round of user input e.g 1 2, lengh of 2 array. 8-2 = 6 (random after round)
+      var counter = userInput.length
       var UserCounter = userInput.length // Counter to say in line with the user input index
       var finalPassword = "";  // To be return by the function at the end of the while/switch statements.
       //
+
+      debugger;
+
+              // We need to guarantee one round of purely criteria with random
+
+              for (var i = 0; i < userInput.length; i++) {
+
+                var guaranteedCriteria = userInput[i];
+      
+                if (guaranteedCriteria === "1") {
+                  // As I added counter +=1 at the top of the while loop.
+                  valueRandom = Math.floor(Math.random() * 26);
+                  // call the pCritera uppercase object
+                  finalPassword += pCriteria.lowercase.criteria[valueRandom];
+      
+                } else if (guaranteedCriteria === "2") {
+      
+                  // As I added counter +=1 at the top of the while loop.
+                  valueRandom = Math.floor(Math.random() * 26);
+                  // call the pCritera uppercase object
+                  finalPassword += pCriteria.uppercase.criteria[valueRandom];
+      
+                } else if (guaranteedCriteria === "3") {
+      
+                  // As I added counter +=1 at the top of the while loop.
+                  valueRandom = Math.floor(Math.random() * 10);
+                  // call the pCritera uppercase object
+                  finalPassword += pCriteria.numeric.criteria[valueRandom];
+      
+                } else if (guaranteedCriteria === "4") {
+      
+      
+                  // As I added counter +=1 at the top of the while loop.
+                  valueRandom = Math.floor(Math.random() * 31);
+                  // call the pCritera uppercase object
+                  finalPassword += pCriteria.symbols.criteria[valueRandom];
+      
+                } 
+              }
        
 
-      while ( counter <= pLenght )  {
+      while ( counter < pLenght )  {
+
+
        
 
         // Take one item/index from the user input
@@ -156,10 +201,9 @@ var generatePassword = function() {
       
         } else {
           // Generate randomness for first round of random password
-          // 
+          // Guarante that at least 1 of each criteria is selected.
           UserCounter = Math.floor( ( (Math.random() * userInput.length) + 1) );
           counter += 1;
-
         }
 
         // Use a random number to get the criteria to use.
