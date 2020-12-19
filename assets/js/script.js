@@ -96,7 +96,8 @@ var generatePassword = function() {
     //console.log(value);
     //window.alert("Your random number is: " + value);
     
-    console.log("Criteria is: lowercase" + " " + pCriteria.lowercase.indexNumber + " " + pCriteria.lowercase.criteria[i]);/*
+    /*
+    //console.log("Criteria is: lowercase" + " " + pCriteria.lowercase.indexNumber + " " + pCriteria.lowercase.criteria[i]);/*
     console.log("Criteria is: uppercase" + " " + pCriteria.uppercase.indexNumber + " " + pCriteria.uppercase.criteria[i]);
     console.log("Criteria is: numeric" + " " + pCriteria.numeric.indexNumber + " " + pCriteria.numeric.criteria[i]);
     console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[i]);
