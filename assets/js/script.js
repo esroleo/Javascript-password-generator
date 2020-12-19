@@ -4,6 +4,19 @@ var arraySplit = ""; // Use to provide outputs to the user
 var exitApplication = false; // on/off switch for running the app
 var userInput = ""; // Important - will be used to generate password based on criteria
 
+// Criteria Object for password
+
+var pCriteria = {
+  lowercase: { indexNumber: 0 , criteria: "abcdefghijklmnopqrstuvwxyz"
+  },
+  uppercase: { indexNumber: 1, criteria: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  },
+  numeric: { indexNumber: 2, criteria: "0123456789"
+  },
+    symbols: { indexNumber: 3, criteria: " !\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~"
+  }
+}
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -23,6 +36,7 @@ var generatePassword = function() {
     // User put a valid input to try to split to array
     // We can now continue to slice to show the output to user
     userInput = userInput.split(" ");
+    // Take the userInput array and slice it from positon 0 to the lenght of the array.
     arraySplit = userInput.slice(0,userInput.length);
   }
   
@@ -61,22 +75,59 @@ var generatePassword = function() {
   }
 
   // Call Function to validate length
-  passLengght();
+  var pLenght = passLenght();
 
-  function passLengght () {
+  // If we pass the userInput for loop and the passLenght function we are good to generate a password.
+
+  generatePasswordRandomness(userInput,pLenght);
+
+  function generatePasswordRandomness(userInput, pLenght) {
+    // Sample will be 8 characters
+    // Number to use on my randomness to be used for the criteria types
+    // My number has to be from 0 to given number to select
+    // I need it to be from e.g 8--> 0 - 7 for my indexing array to be checking and printed later.
+    var indexRandom = [];
+
+    for ( var i =0; i < 4; i++) {
+
+    var valueRandom = Math.floor(Math.random() * 4);
+    indexRandom.push(valueRandom);
+    console.log("Index is now : " + indexRandom);
+    //console.log(value);
+    //window.alert("Your random number is: " + value);
+    
+    console.log("Criteria is: lowercase" + " " + pCriteria.lowercase.indexNumber + " " + pCriteria.lowercase.criteria[i]);/*
+    console.log("Criteria is: uppercase" + " " + pCriteria.uppercase.indexNumber + " " + pCriteria.uppercase.criteria[i]);
+    console.log("Criteria is: numeric" + " " + pCriteria.numeric.indexNumber + " " + pCriteria.numeric.criteria[i]);
+    console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[i]);
+    console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[6]);
+    console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[7]);
+    console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[20]);
+    console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[21]);
+    console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[22]);
+    console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[23]);
+    console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[24]);
+    */
+   }
+ 
+  }
+
+
+  function passLenght () {
 
     // Ask user for lenght of password.
     window.alert("How long do you want your password to be from 8-128 characters.\n E.g 20");
     var pLenght = parseInt(window.prompt("Please enter lenght"));
     if (pLenght < 8 || pLenght > 128) {
       window.alert("Please enter a valid number between 8-128");
-      passLengght();
+      passLenght();
 
     } else if (!pLenght) {
       window.alert("Please enter a valid number between 8-128")
-      passLengght();
+      passLenght();
     } else {
       window.alert("You have entered a valid lenght of: " + pLenght + "\n Password will now be generated");
+      return pLenght;
     }
   }
 
