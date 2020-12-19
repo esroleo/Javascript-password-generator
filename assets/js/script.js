@@ -3,6 +3,8 @@
 var arraySplit = ""; // Use to provide outputs to the user
 var exitApplication = false; // on/off switch for running the app
 var userInput = ""; // Important - will be used to generate password based on criteria
+var finalPassword = ""; 
+
 
 // Criteria Object for password
 
@@ -25,6 +27,7 @@ var generatePassword = function() {
   // Alert user for criteria
   window.alert("The criteria for password generator are lowercase, uppercase, numeric, and/or special characters");
   // Split into an array 
+  //debugger;
   userInput = window.prompt("Select criteria for password (you can select more than one) (use space): 1=lowercase 2=uppercase 3=numeric 4=special characters ");
   // If user press cancel while trying to split it will fail, hence we need split after the fact.
   // If statement required to split 
@@ -86,16 +89,19 @@ var generatePassword = function() {
     // Number to use on my randomness to be used for the criteria types
     // My number has to be from 0 to given number to select
     // I need it to be from e.g 8--> 0 - 7 for my indexing array to be checking and printed later.
-    var indexRandom = [];
+    var valueRandom = 0;
+    //var indexRandom = [];
+    
 
-    for ( var i =0; i < 4; i++) {
+    //for ( var i=0; i < 4; i++) {
 
-    var valueRandom = Math.floor(Math.random() * 4);
-    indexRandom.push(valueRandom);
-    console.log("Index is now : " + indexRandom);
+    //valueRandom = Math.floor(Math.random() * 4);
+    //valueRandom = Math.floor(Math.random() * 4);
+  
+    //indexRandom.push(valueRandom);
+    //console.log("Index is now : " + indexRandom);
     //console.log(value);
     //window.alert("Your random number is: " + value);
-    
     /*
     //console.log("Criteria is: lowercase" + " " + pCriteria.lowercase.indexNumber + " " + pCriteria.lowercase.criteria[i]);/*
     console.log("Criteria is: uppercase" + " " + pCriteria.uppercase.indexNumber + " " + pCriteria.uppercase.criteria[i]);
@@ -109,7 +115,76 @@ var generatePassword = function() {
     console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[23]);
     console.log("Criteria is: symbols" + " " + pCriteria.symbols.indexNumber + " " + pCriteria.symbols.criteria[24]);
     */
-   }
+   // }
+    // Create a for loop to generate the final password based on lenght selected by user.
+    // Use the the object pCriteria with the multi dimensional array of indexNumber and criteria
+  
+
+    // loop throught the userInput and apply randomness
+    // Initliaze while password lenght requested is smaller than the lenght
+  
+   
+   
+      debugger;
+      
+      var counter = 1;
+      var UserCounter = 0
+      var finalPassword = "";
+       
+
+
+
+      while ( counter <= pLenght )  {
+        counter += 1;
+
+        // Take one item/index from the user input
+        if (!userInput[UserCounter]) {
+        //means that there is no more user input to check 
+        window.alert("we are done")
+        UserCounter -=1
+        
+        }
+
+        var inputCriteria = userInput[UserCounter];
+        
+
+        // Convert this output into integer for further validation
+        var inputCriteriaInteger = parseInt(inputCriteria);
+
+        switch(inputCriteriaInteger) {
+          case 1:
+            //finalPassword += "a";
+            // As I added counter +=1 at the top of the while loop.
+            valueRandom = Math.floor(Math.random() * 26);
+            finalPassword += pCriteria.lowercase.criteria[valueRandom];
+            //to check if the user had any other options to do.
+            UserCounter += 1;
+            console.log(finalPassword);
+            break;
+          case 2:
+            //uppercase
+          case 3:
+            //numeruic
+          case 4:
+            //symbols
+        }
+
+        
+
+
+
+
+
+
+      }
+    
+
+
+    
+    console.log("Final password is: " + finalPassword);
+
+   //return finalpassword
+
  
   }
 
@@ -151,6 +226,7 @@ function writePassword() {
 
 
 // Add event listener to generate button
+
 generateBtn.addEventListener("click", writePassword);
 
 // Verify if we should start the application or not.
