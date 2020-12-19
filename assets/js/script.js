@@ -125,11 +125,13 @@ var generatePassword = function() {
   
    
    
-      debugger;
+      //debugger;
       
-      var counter = 1;
-      var UserCounter = 0
-      var finalPassword = "";
+      
+      var counter = 1; // Counter for the while loop
+      var UserCounter = 0 // Counter to say in line with the user input index
+      var finalPassword = "";  // To be return by the function at the end of the while/switch statements.
+      //
        
 
 
@@ -139,10 +141,21 @@ var generatePassword = function() {
 
         // Take one item/index from the user input
         if (!userInput[UserCounter]) {
-        //means that there is no more user input to check 
-        window.alert("we are done")
-        UserCounter -=1
+
         
+          // means that we passed the array of options provided by the user.
+          // Hence we need to subsctract on in order to get back in the avaiale array.
+          // randomize given the lenght - where we are at the counter and user input array
+          
+         // window.alert("we are done");
+          // Randomize the UserCounter to decrease in index to get back to the undefined array.
+          // E.g 3 options selected - once we get to iteration #4 for the user input it will be undefinec.
+          // To fix this we got back a random number between 0 and lengh of the userInput array +1 to be in range.
+          // E.g (without the +1) 0 3 but will not include 3, therefore we need +1. That will be 0-4 round down to 3.
+          // We are now at position undefined, therefore we need to remove one to be inside the userInput array.
+          //UserCounter -= 1;
+          UserCounter -= Math.floor( ( (Math.random() * userInput.length) + 1) );
+      
         }
 
         var inputCriteria = userInput[UserCounter];
@@ -163,27 +176,44 @@ var generatePassword = function() {
             break;
           case 2:
             //uppercase
+            //finalPassword += "a";
+            // As I added counter +=1 at the top of the while loop.
+            valueRandom = Math.floor(Math.random() * 26);
+            // call the pCritera uppercase object
+            finalPassword += pCriteria.uppercase.criteria[valueRandom];
+            //to check if the user had any other criteria options.
+            UserCounter += 1;
+            break;
           case 3:
             //numeruic
+            //uppercase
+            //finalPassword += "a";
+            // As I added counter +=1 at the top of the while loop.
+            valueRandom = Math.floor(Math.random() * 10);
+            // call the pCritera uppercase object
+            finalPassword += pCriteria.numeric.criteria[valueRandom];
+            //to check if the user had any other criteria options.
+            UserCounter += 1;
+            break;
           case 4:
             //symbols
+            //numeruic
+            //uppercase
+            //finalPassword += "a";
+            // As I added counter +=1 at the top of the while loop.
+            valueRandom = Math.floor(Math.random() * 31);
+            // call the pCritera uppercase object
+            finalPassword += pCriteria.symbols.criteria[valueRandom];
+            //to check if the user had any other criteria options.
+            UserCounter += 1;
+            break;
         }
-
-        
-
-
-
-
-
 
       }
     
+    //return finalpassword
 
-
-    
     console.log("Final password is: " + finalPassword);
-
-   //return finalpassword
 
  
   }
