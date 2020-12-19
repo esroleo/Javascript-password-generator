@@ -1,7 +1,8 @@
-// Assignment code here
 
-var arraySplit = "";
-var exitApplication = false;
+// Global Variables
+var arraySplit = ""; // Use to provide outputs to the user
+var exitApplication = false; // on/off switch for running the app
+var userInput = ""; // Important - will be used to generate password based on criteria
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -11,7 +12,7 @@ var generatePassword = function() {
   // Alert user for criteria
   window.alert("The criteria for password generator are lowercase, uppercase, numeric, and/or special characters");
   // Split into an array 
-  var userInput = window.prompt("Select criteria for password (you can select more than one) (use space): 1=lowercase 2=uppercase 3=numeric 4=special characters ");
+  userInput = window.prompt("Select criteria for password (you can select more than one) (use space): 1=lowercase 2=uppercase 3=numeric 4=special characters ");
   // If user press cancel while trying to split it will fail, hence we need split after the fact.
   // If statement required to split 
   if (!userInput) {
@@ -26,7 +27,7 @@ var generatePassword = function() {
   }
   
   // Tell the user what they have selected.
-  window.alert("You have selected " + arraySplit);
+  window.alert("You have selected: " + arraySplit);
   //console.log(userInput);
   //console.log(userInput[0]);
 
@@ -38,7 +39,7 @@ var generatePassword = function() {
     var inputCriteriaInteger = parseInt(inputCriteria);
     // Save output in variable at the end of the loop to generate a password of randomness.
     // Switch case with fall through logic to arrive at conclusions
-    switch(inputCriteriaInteger) {
+    switch(inputCriteriaInteger) { // fall through takes care of at least one option is selected.
       case 1:
       case 2:
       case 3:
@@ -47,12 +48,12 @@ var generatePassword = function() {
         break;
       default:
         if (!inputCriteriaInteger) {
-          window.alert(" Do you wish to exit the application?");
+          window.alert("Please select a criteria using numbers and only from 1-4 seprated by space.\n Restarting application");
           generatePassword();  
         }
         // Iterate internall until valid input.
         else { 
-          window.alert(" Please select a criteria using numbers. " + "User input: " + inputCriteria + " is invalid");
+          window.alert(" Please select a criteria using numbers and only from 1-4 seprated by space.\n\n" + "User input: " + inputCriteria + " is invalid");
           generatePassword();  
         }
         
