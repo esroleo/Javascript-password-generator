@@ -21,15 +21,17 @@ var pCriteria = {
 // Call function to generate password criterias and adoption to our code
 var generatePassword = function() {
   // Alert user for criteria
-  window.alert("The criteria for password generator are lowercase, uppercase, numeric, and/or special characters");
+  window.alert("The criteria for password generator are lowercase, uppercase, numeric, and/or special characters.");
 
   // Take user input
-    userInput = window.prompt("Select criteria for password (you can select more than one) (use space): 1=lowercase 2=uppercase 3=numeric 4=special characters.\nPlease note that repeating criteria will be ignored. Only one of the repeating criteria will be selected.");
+    userInput = window.prompt("Select criteria for password (you can select more than one) (use space): 1=lowercase 2=uppercase 3=numeric 4=special characters.\n");
   // If user press cancel while trying to split it will fail, hence we need split after the fact.
+  // If user enters exit, let us exit the application.
   // If statement required to split 
+  debugger;
   if (!userInput) {
-    exitApplication = window.alert("Restarting the application");
-    exitApplicationForm();
+    window.alert("If you wish to close the application, please close this password generator tab.")
+    generatePassword();
   } else {
     // Continue with the application. User put a valid input to try to split to array. We can now continue to slice to show the output to user
     userInput = userInput.split(" ");
@@ -39,6 +41,69 @@ var generatePassword = function() {
   
   // Tell the user what they have selected.
   window.alert("You have selected: " + arraySplit);
+
+  // Validate for duped entries by checking the userInput
+  var duplicatePassState = true;
+  // Arrays, objects and functions are mutable ojbects so "copy" will reference and modify the original.
+  // We need to "clone" it by creating an empty array and assigned the same values to our "cloned" array for validation.
+  var validateInput = [];
+  var round1Shift = "";
+  var round1Pop = "";
+  var criteria3 = "";
+  var criteria4 = "";
+  var validateInputArray = []
+
+  // Check first if only one input was proviced to avoid checking for duplicity of criteria numbers.
+  if (userInput.length == 1) {
+    duplicatePassState = false;
+  }
+
+  // Check for duplicity of numbers and send the user back to the generatePassword(); function.
+  while (duplicatePassState) {
+
+    //Create array using values
+    var tempVar = "";
+    for (var i = 0; i < userInput.length; i++) {
+      tempVar = userInput[i];
+      validateInput.push(tempVar);
+    }
+
+    // First check will pass, then second will be checked for duplications
+    // nested if statement on else will be used for tis
+    round1Shift = validateInput.shift();
+    round1Pop = validateInput.pop();
+    if (round1Shift === round1Pop) {
+      window.alert("You have entered " + round1Shift + " more than once.");
+      generatePassword();
+    } 
+     
+    else {
+      // Logic is that if you shift and pop you will be left with 4 items, more than is also validated on other sections.
+      // If e.g 1, 2, 1, 3. shift and pop are 1 3 then those are compared with the round do of shift and pop which is 2 and 1.
+      
+      var round2Shift = "";
+      var round2Pop = "";
+      round2Shift = validateInput.shift();
+      round2Pop = validateInput.pop();
+
+      if (round1Shift === round2Shift) {
+        window.alert("Duplication detected, please check criteria rules");
+        generatePassword();
+      } else if (round1Pop === round2Pop) {
+        window.alert("Duplication detected, please check criteria rules");
+        generatePassword();
+      } else if (round1Shift === round2Pop) {
+        window.alert("Duplication detected, please check criteria rules");
+        generatePassword();
+      } else if (round1Pop === round2Shift) {
+        window.alert("Duplication detected, please check criteria rules");
+        generatePassword();
+      } else {
+        // Validation has been passed for duplication. Further validation below for numbers not on our case 1-4 and non integer values entered like "r".
+        duplicatePassState = false;
+      }
+    } 
+  }
 
   // Create a for loop to iterate the user input to determine if valid criteria input passed.
   for (var i = 0; i < userInput.length; i++) {
@@ -174,6 +239,7 @@ var generatePassword = function() {
     window.alert("How long do you want your password to be from 8-128 characters.\n E.g 20");
     var pLenght = parseInt(window.prompt("Please enter lenght")); // Convert to ingteger to check valid input.
     if (pLenght < 8 || pLenght > 128) {
+      
       window.alert("Please enter a valid number between 8-128");
       passLenght();
 
@@ -214,10 +280,12 @@ generateBtn.addEventListener("click", writePassword);
 
 // Verify if we should start the application or not.
 function exitApplicationForm () {
-   if (exitApplication) {
+   if (exitApplication === true) {
      // Exit the application by doing nothing.
    } else {
      // Start the application
+     // To initilze if refreshing
+    // exitApplication = false;
      writePassword(); // This is the same function used by the click Generate Password button.
     }
 }
