@@ -4,6 +4,7 @@ var arraySplit = ""; // Use to provide outputs to the user
 var exitApplication = false; // on/off switch for running the app
 var userInput = ""; // Important - will be used to generate password based on criteria
 var finalPassword = ""; 
+var displayPassword = "";
 
 
 // Criteria Object for password
@@ -28,7 +29,7 @@ var generatePassword = function() {
   window.alert("The criteria for password generator are lowercase, uppercase, numeric, and/or special characters");
   // Split into an array 
   //debugger;
-  userInput = window.prompt("Select criteria for password (you can select more than one) (use space): 1=lowercase 2=uppercase 3=numeric 4=special characters ");
+  userInput = window.prompt("Select criteria for password (you can select more than one) (use space): 1=lowercase 2=uppercase 3=numeric 4=special characters.\nPlease note that repeating criteria will be ignored. Only one of the repeating criteria will be selected.");
   // If user press cancel while trying to split it will fail, hence we need split after the fact.
   // If statement required to split 
   if (!userInput) {
@@ -48,11 +49,17 @@ var generatePassword = function() {
   //console.log(userInput);
   //console.log(userInput[0]);
 
-  debugger;
+  //debugger;
+  //Validate that criteria is not repeated as an array
+
+  var repeatedInput = [];
+  var repeatedInputValue = "";
+  
 
   // Create a for loop to iterate the user input to determine if valid criteria input
   for (var i = 0; i < userInput.length; i++) {
-    // Take one item/index from the user input
+
+     // Take one item/index from the user input
     var inputCriteria = userInput[i];
     // Convert this output into integer for further validation
     var inputCriteriaInteger = parseInt(inputCriteria);
@@ -67,7 +74,7 @@ var generatePassword = function() {
         break;
       default:
         if (!inputCriteriaInteger) {
-          window.alert("Please select a criteria using numbers and only from 1-4 seprated by space.\n Restarting application");
+          window.alert("Please select a criteria using numbers and only from 1-4 seprated by one space.\nRestarting application");
           generatePassword();  
         }
         // Iterate internall until valid input.
@@ -84,7 +91,7 @@ var generatePassword = function() {
 
   // If we pass the userInput for loop and the passLenght function we are good to generate a password.
 
-  generatePasswordRandomness(userInput,pLenght);
+  displayPassword = generatePasswordRandomness(userInput,pLenght);
 
   function generatePasswordRandomness(userInput, pLenght) {
     // Sample will be 8 characters
@@ -137,7 +144,7 @@ var generatePassword = function() {
       var finalPassword = "";  // To be return by the function at the end of the while/switch statements.
       //
 
-      debugger;
+      
 
               // We need to guarantee one round of purely criteria with random
 
@@ -180,8 +187,7 @@ var generatePassword = function() {
       while ( counter < pLenght )  {
 
 
-       
-
+  
         // Take one item/index from the user input
         // Lenght is 4 but the index is 3. Hence -1
         // Catch any weird error coming lastly from the user input.
@@ -264,6 +270,7 @@ var generatePassword = function() {
     //return finalpassword
 
     console.log("Final password is: " + finalPassword);
+    return finalPassword;
 
  
   }
@@ -291,6 +298,12 @@ var generatePassword = function() {
 
 // Write password to the #password input
 function writePassword() {
+ 
+  //initilaize all variables
+  //arraySplit = ""; // Use to provide outputs to the user
+  //exitApplication = false; // on/off switch for running the app
+  //userInput = ""; // Important - will be used to generate password based on criteria
+  //finalPassword = ""; 
   window.alert(" Lets check our password criteria options");
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -298,7 +311,7 @@ function writePassword() {
   //passwordText.value = password;
   document.getElementById("password").readOnly = false;
   //document.getElementById("password").value = "Fifth Avenue, New York City";
-  document.getElementById("password").value = arraySplit;
+  document.getElementById("password").value = displayPassword;
   document.getElementById("password").readOnly = true;
 
 }
