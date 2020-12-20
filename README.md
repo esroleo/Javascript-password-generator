@@ -16,7 +16,7 @@ Desktop screen:
 
 ![Top-Page-Area](./assets/images/landing-page.JPG?raw=true "Top-Page-Area")
 
-Smaller devices screen example:
+Smaller devices screen:
 
 ![Top-Page-Area](./assets/images/landing-page-smaller-screen.JPG?raw=true "Top-Page-Area")
 
@@ -61,7 +61,7 @@ Steps to have a successful password generated.
 
 ### Lenght selected confirmation
 
-![nav-menu](./assets/images/enter-lenght-integer-confirmation.JPGJPG?raw=true "Navigational Menu")
+![nav-menu](./assets/images/enter-lenght-integer-confirmation.JPG?raw=true "Navigational Menu")
 
 ### End result - test of 20 performed. Copy and paste you password. Note that you cannot type once the password has been provided for security.
 
