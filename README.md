@@ -61,7 +61,7 @@ Steps to have a successful password generated.
 
 ### Lenght selected confirmation
 
-![nav-menu](./assets/images/enter-lenght-integer-confirmation.JPG.JPG?raw=true "Navigational Menu")
+![nav-menu](./assets/images/enter-lenght-integer-confirmation.JPG?raw=true "Navigational Menu")
 
 ### End result - test of 20 performed. Copy and paste you password. Note that you cannot type once the password has been provided for security.
 
