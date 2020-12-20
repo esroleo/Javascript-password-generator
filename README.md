@@ -61,28 +61,12 @@ Steps to have a successful password generated.
 
 ### Lenght selected confirmation
 
-![nav-menu](./assets/images/enter-lenght-confirmation.JPG?raw=true "Navigational Menu")
+![nav-menu](./assets/images/enter-lenght-integr-confirmation.JPG?raw=true "Navigational Menu")
 
 ### End result - test of 20 peromed. Copy and paste you password. Note that you cannot type once the password has been provided for security.
 
-![nav-menu](./assets/images/cipy-paste-your-password.JPG?raw=true "Navigational Menu")
+![nav-menu](./assets/images/copy-paste-your-password.JPG?raw=true "Navigational Menu")
 
-
-
-
-
- 
-
-
-### Explore the rest of the page by scrolling up or down.
-
-Desktop screen:
-
-![body-section](./assets/images/navigate-website.JPG?raw=true "Body Section")
-
-Smaller devices screen example:
-
-![body-section](./assets/images/navigate-website-smaller.JPG?raw=true "Body Section")
 
 
 <a name="contributing"></a>
