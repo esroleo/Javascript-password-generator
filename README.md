@@ -46,10 +46,10 @@ Steps to have a successful password generated.
 ![nav-menu](./assets/images/criteria-options.JPG?raw=true "Navigational Menu")
 
 ### Enter criteria options: enter the integer corresponiding to the option you want.
-### Leave  space between the criteria selected. 
-### Duplicated values are not allowed. 
-### Incorrect criteria will cause application to restart.
-### If you wish to exit the application, please close the browser tab.
+#### Leave  space between the criteria selected. ####
+#### Duplicated values are not allowed. #### 
+#### Incorrect criteria will cause application to restart. ####
+#### If you wish to exit the application, please close the browser tab. ####
 
 ![nav-menu](./assets/images/enter-criteria.JPG?raw=true "Navigational Menu")
 
