@@ -16,7 +16,7 @@ Desktop screen:
 
 ![Top-Page-Area](./assets/images/landing-page.JPG?raw=true "Top-Page-Area")
 
-Smaller devices screen example:
+Smaller devices screen:
 
 ![Top-Page-Area](./assets/images/landing-page-smaller-screen.JPG?raw=true "Top-Page-Area")
 
