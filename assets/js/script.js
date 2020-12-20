@@ -80,7 +80,7 @@ var generatePassword = function() {
     else {
       // Logic is that if you shift and pop you will be left with 4 items, more than is also validated on other sections.
       // If e.g 1, 2, 1, 3. shift and pop are 1 3 then those are compared with the round do of shift and pop which is 2 and 1.
-      
+       debugger;
       var round2Shift = "";
       var round2Pop = "";
       round2Shift = validateInput.shift();
@@ -98,7 +98,15 @@ var generatePassword = function() {
       } else if (round1Pop === round2Shift) {
         window.alert("Duplication detected, please check criteria rules.");
         generatePassword();
-      } else {
+      } // Should not be needed but left in case as it was done on previou if statement.
+        else if (round1Shift === round1Pop) {
+        window.alert("Duplication detected, please check criteria rules.");
+        generatePassword();
+      } else if (round2Shift === round2Pop) {
+        window.alert("Duplication detected, please check criteria rules.");
+        generatePassword();
+      } 
+      else {
         // Validation has been passed for duplication. Further validation below for numbers not on our case 1-4 and non integer values entered like "r".
         duplicatePassState = false;
       }
