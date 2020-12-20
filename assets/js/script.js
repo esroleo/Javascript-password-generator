@@ -73,7 +73,7 @@ var generatePassword = function() {
     round1Shift = validateInput.shift();
     round1Pop = validateInput.pop();
     if (round1Shift === round1Pop) {
-      window.alert("You have entered " + round1Shift + " more than once.");
+      window.alert("Duplication detected, please check criteria rules.");
       generatePassword();
     } 
      
@@ -87,16 +87,16 @@ var generatePassword = function() {
       round2Pop = validateInput.pop();
 
       if (round1Shift === round2Shift) {
-        window.alert("Duplication detected, please check criteria rules");
+        window.alert("Duplication detected, please check criteria rules.");
         generatePassword();
       } else if (round1Pop === round2Pop) {
-        window.alert("Duplication detected, please check criteria rules");
+        window.alert("Duplication detected, please check criteria rules.");
         generatePassword();
       } else if (round1Shift === round2Pop) {
-        window.alert("Duplication detected, please check criteria rules");
+        window.alert("Duplication detected, please check criteria rules.");
         generatePassword();
       } else if (round1Pop === round2Shift) {
-        window.alert("Duplication detected, please check criteria rules");
+        window.alert("Duplication detected, please check criteria rules.");
         generatePassword();
       } else {
         // Validation has been passed for duplication. Further validation below for numbers not on our case 1-4 and non integer values entered like "r".
