@@ -6,9 +6,7 @@ var userInput = ""; // Important - will be used to generate password based on cr
 var finalPassword = ""; // Important - used as a variable to store temporatly a random passoword.
 var displayPassword = ""; // Impoprtant- used to display the final password on the text area of the HTML element.
 
-
 // Mutlidimenional object to use later for criteria and random generating strings.
-
 var pCriteria = {
   lowercase: { indexNumber: 0 , criteria: "abcdefghijklmnopqrstuvwxyz"
   },
@@ -19,8 +17,6 @@ var pCriteria = {
     symbols: { indexNumber: 3, criteria: "!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~"
   }
 }
-
-
 
 // Call function to generate password criterias and adoption to our code
 var generatePassword = function() {
@@ -84,8 +80,7 @@ var generatePassword = function() {
     // Sample will be 8 characters for our test
     // I need it to be from e.g 8--> 0 - 7 for my indexing array to be checked and printed later.
     var valueRandom = 0;
-    
-      
+     
     //var counter = 1; // Counter for the while loop
     // We need to at a minimum use the criteria from user first as a "round"
     // E.g 8 lenght selected by user. First round of user input e.g 1 2, lenght of 2 is the array. Therefore I need sample 8 (lenght selected by user)-2(User-input).
@@ -124,13 +119,8 @@ var generatePassword = function() {
       } 
     }
 
-      
-
-
     // Now that we finish and concatenaed our strinc user input criteria randomness, we move to finish with the rest of the p.lenght. Our example of 8 range is now 6 left or while  2 < 8.
     while ( counter < pLenght )  {
-
-
 
       // Take one item/index from the user input
       // Lenght is 4 but the index is 3. We need plus 1 to actually inclue the number they selected using the Math.floor and Math.random selected.
@@ -147,12 +137,10 @@ var generatePassword = function() {
         counter += 1;
       }
 
-        
       // Lenght is 4 but the index is 3. Hence -1. 
       //UserCounter used as the random index to tacke the cases which will then randomly get the criteria from the pCriteria object.
       var inputCriteria = userInput[(UserCounter - 1)];
       
-
       // Make sure the input is an integer (it was validated in other areas of our code.)
       var inputCriteriaInteger = parseInt(inputCriteria);
 
@@ -179,7 +167,6 @@ var generatePassword = function() {
     // Our final password is ready to be returned! --> finalPassword back to displayPassword
     return finalPassword;
   }
-
 
   function passLenght () { // This functions validate the user input for lenght of characters from 8-128
     
@@ -218,7 +205,6 @@ function writePassword() {
   document.getElementById("password").value = displayPassword; // Display password in text area.
   document.getElementById("password").readOnly = true; // Disable the text area so user can only copy paste and not touch or modify the password provided.
 }
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
