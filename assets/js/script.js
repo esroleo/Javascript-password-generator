@@ -38,9 +38,38 @@ var generatePassword = function() {
     // Take the userInput array and slice it from positon 0 to the lenght of the array in order to display it back to the user as string.
     arraySplit = userInput.slice(0,userInput.length);
   }
-  
-  // Tell the user what they have selected.
+
+
+
+  // Tell the user what they have selected. 
   window.alert("You have selected: " + arraySplit);
+
+ // Create a for loop to iterate the user input to determine if valid criteria input passed.
+ for (var i = 0; i < userInput.length; i++) {
+  // Take one item/index from the user input and and moved to an integer for our switch case.
+  var inputCriteria = userInput[i];
+  // Convert this output into integer for further validation
+  var inputCriteriaInteger = parseInt(inputCriteria);
+  // Switch case with fall through logic to arrive at conclusions
+  switch(inputCriteriaInteger) { // fall through takes care of at least one option is selected.
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      //Our array is clean every time we fall through here. We then break to check the next index based on userInput.lenght
+      break;
+    default: // Anything else that is not our case 1-4 as integers (catch non integers here)
+      if (!inputCriteriaInteger) { // We are catching Nulls NaN etc. We will divert it for a !inputCriteriaInteger conditional statement.
+        window.alert("Please select a criteria using numbers and only from 1-4 seprated by one space.\nRestarting application");
+        generatePassword(); // Recursion back to our function to start the criteria selection again.
+      }
+      else { // If not !inputCriteriaInteger means that we have non integers here.
+        window.alert(" Please select a criteria using numbers and only from 1-4 seprated by space.\n\n" + "User input: " + inputCriteria + " is invalid");
+        generatePassword(); // Recursion back to our function to start the criteria selection again.
+      } 
+  }
+}
+
 
   // Validate for duped entries by checking the userInput
   var duplicatePassState = true;
@@ -86,6 +115,14 @@ var generatePassword = function() {
       round2Shift = validateInput.shift();
       round2Pop = validateInput.pop();
 
+      // Validate undefined shift and pop. This will then say that first pass was ok. and there is nothing else to check
+
+      if(!round2Shift || !round2Pop) {
+        duplicatePassState = false;
+        break;
+      }
+
+
       if (round1Shift === round2Shift) {
         window.alert("Duplication detected, please check criteria rules.");
         generatePassword();
@@ -113,31 +150,7 @@ var generatePassword = function() {
     } 
   }
 
-  // Create a for loop to iterate the user input to determine if valid criteria input passed.
-  for (var i = 0; i < userInput.length; i++) {
-    // Take one item/index from the user input and and moved to an integer for our switch case.
-    var inputCriteria = userInput[i];
-    // Convert this output into integer for further validation
-    var inputCriteriaInteger = parseInt(inputCriteria);
-    // Switch case with fall through logic to arrive at conclusions
-    switch(inputCriteriaInteger) { // fall through takes care of at least one option is selected.
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-        //Our array is clean every time we fall through here. We then break to check the next index based on userInput.lenght
-        break;
-      default: // Anything else that is not our case 1-4 as integers (catch non integers here)
-        if (!inputCriteriaInteger) { // We are catching Nulls NaN etc. We will divert it for a !inputCriteriaInteger conditional statement.
-          window.alert("Please select a criteria using numbers and only from 1-4 seprated by one space.\nRestarting application");
-          generatePassword(); // Recursion back to our function to start the criteria selection again.
-        }
-        else { // If not !inputCriteriaInteger means that we have non integers here.
-          window.alert(" Please select a criteria using numbers and only from 1-4 seprated by space.\n\n" + "User input: " + inputCriteria + " is invalid");
-          generatePassword(); // Recursion back to our function to start the criteria selection again.
-        } 
-    }
-  }
+ 
    
   // Once we have achived valid criteria input, we want to tell the user what lenght they want from 8-128 characters.
   // Call Function to validate length
